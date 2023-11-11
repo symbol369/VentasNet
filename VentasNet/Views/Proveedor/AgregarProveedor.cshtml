@@ -1,0 +1,38 @@
+﻿@using VentasNet.Infra.DTO.Request
+@model ProveedorReq
+
+
+<h2>Agregar Proveedor</h2>
+
+
+@using (Html.BeginForm("AgregarProveedor", "Proveedor", FormMethod.Post))
+{
+    <div class="container">
+        <div class="panel-body">
+
+            <div class="form-group col-4 ">
+                @Html.LabelFor(x=> x.RazonSocial)
+                @Html.TextBoxFor(model => model.RazonSocial, new {@class="form-control"})
+            </div>
+            <div class="form-group col-4">
+                @Html.LabelFor(x=> x.Cuit)
+                @Html.TextBoxFor(model => model.Cuit, new {@class="form-control"})
+            </div>
+            <div class="form-group col-4">
+                @Html.LabelFor(x=> x.Domicilio)
+                @Html.TextBoxFor(model => model.Domicilio, new {@class="form-control"})
+            </div>
+            <div class="form-group col-4">
+                @Html.LabelFor(x=> x.Telefono)
+                @Html.TextBoxFor(model => model.Telefono, new {@class="form-control"})
+            </div>
+            <div class="form-group col-4">
+                @Html.LabelFor(x=> x.Email)
+                @Html.TextBoxFor(model => model.Email, new {@class="form-control"})
+            </div><br>
+            <div class=" form-group align-items-end">
+                <button class="btn-primary" type="submit">Guardar</button>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,53 @@
+﻿@using VentasNet.Infra.DTO.Request
+@model IEnumerable<UsuarioReq>
+
+<h2>Listado de Usuarios</h2>
+
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuit)
+            </th>
+            <th>@Html.Label("Acciones")</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (ViewBag.Usuario != null)
+            {
+                foreach (UsuarioReq usuario in ViewBag.Usuario)
+                {
+                    <tr>
+                        <td>@usuario.Username</td>
+                        <td>@usuario.Apellido</td>
+                        <td>@usuario.Email</td>
+                        <td>@usuario.Cuit</td>
+
+                        <td>
+                            <!-- NOMBRE DEL BOTON/METODO DONDE APUNTA-->
+                            @Html.ActionLink("Editar", "ModificarUsuario","Usuario", usuario , new{ @class="btn btn-primary" })
+
+                            @Html.ActionLink("Borrar", "Delete", "Usuario" , usuario ,  new{ @class="btn btn-danger" })
+                        </td>
+                    </tr>
+
+                }
+
+            }
+
+        }
+
+    </tbody>
+</table>

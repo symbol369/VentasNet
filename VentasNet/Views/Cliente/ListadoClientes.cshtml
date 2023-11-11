@@ -1,0 +1,38 @@
+﻿@using VentasNet.Infra.DTO.Request
+@model IEnumerable<ClienteReq>
+
+<h2>Listado de Clientes</h2>
+
+@{
+    var clienteReq = new ClienteReq();
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.RazonSocial)</th>
+            <th>@Html.DisplayNameFor(model => model.Cuit)</th>
+            <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
+            <th>@Html.DisplayNameFor(model => model.Provincia)</th>
+        </tr>
+    </thead>
+
+    @{
+        if (ViewBag.Cliente!=null)
+        {
+            foreach (ClienteReq cliente in ViewBag.Cliente)
+            {
+                <tr>
+                    <td>@cliente.RazonSocial</td>
+                    <td>@cliente.Cuit</td>
+                    <td>@cliente.Domicilio</td>
+                    <td>@cliente.Provincia</td>
+                    <td>
+                        @Html.ActionLink("Edit", "ModificarCliente","Cliente", cliente, new{@class = "btn btn-primary"})
+                        @Html.ActionLink("Delete", "Delete","Cliente", Model, new{@class = "btn btn-danger"})
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

@@ -1,0 +1,55 @@
+﻿@using VentasNet.Infra.DTO.Request
+@model IEnumerable<ProveedorReq>
+
+
+<h2>Lista de Proveedores</h2>
+
+
+<table class="table table-dark table-hover">
+
+
+    <thead>
+        <tr>
+            <!--ARMO EL ENCABEZADO DE MI TABLA DE CLIENTES-->
+
+            <th>@Html.DisplayNameFor(model => model.RazonSocial)</th>
+            <th>@Html.DisplayNameFor(model => model.Cuit)</th>
+            <th>@Html.DisplayNameFor(model => model.Domicilio)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+
+            <th>@Html.Label("Acciones")</th>
+        </tr>
+    </thead>
+
+    @{
+        //Aca escribo codigo c#
+
+        //recorro la lista de clientes usando el foreach
+        if (ViewBag.Proveedores != null)//VERIFICO QUE NO VENGA NULO
+        {
+            foreach (ProveedorReq proveedor in ViewBag.Proveedores)
+            {
+                <tr>
+
+                    <td>@proveedor.RazonSocial</td>
+                    <td>@proveedor.Cuit</td>
+                    <td>@proveedor.Domicilio</td>
+                    <td>@proveedor.Email</td>
+                    <td>@proveedor.Telefono</td>
+
+                    <td>
+                        <!-- NOMBRE DEL BOTON/METODO DONDE APUNTA-->
+                        @Html.ActionLink("Editar", "ModificarProveedor","Proveedor", proveedor  , new{  @class="btn btn-primary" })
+                        @Html.ActionLink("Borrar", "Delete", "Proveedor" , proveedor ,  new{ @class="btn btn-danger" })
+                    </td>
+                </tr>
+
+            }
+
+        }
+
+
+    }
+
+</table>

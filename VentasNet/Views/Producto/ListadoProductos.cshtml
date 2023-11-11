@@ -1,0 +1,61 @@
+﻿@using VentasNet.Infra.DTO.Request
+@model IEnumerable<ProductoReq>
+
+
+
+<h1>Lista de Productos</h1>
+
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NombreProducto)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)  @* ver pq no muestra la descripcion *@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImporteProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoProducto)
+            </th>
+            <th>
+                @Html.Label("Acciones")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+
+
+            if (ViewBag.Producto != null)//VERIFICO QUE NO VENGA NULO
+            {
+                foreach (ProductoReq producto in ViewBag.Producto)
+                {
+                    <tr>
+                        <td>@producto.NombreProducto</td>
+                        <td>@producto.Descripcion</td>
+                        <td>@producto.ImporteProducto</td>
+                        <td>@producto.CodigoProducto</td>
+
+                        <td>
+                            <!-- NOMBRE DEL BOTON/METODO DONDE APUNTA-->
+                            @Html.ActionLink("Editar", "ModificarProducto","Producto", producto, new{ @class="btn btn-primary" })
+
+                            @Html.ActionLink("Borrar", "Delete", "Producto" , producto ,  new{ @class="btn btn-danger" })
+                        </td>
+                    </tr>
+
+                }
+
+            }
+
+
+        }
+
+    </tbody>
+</table>
